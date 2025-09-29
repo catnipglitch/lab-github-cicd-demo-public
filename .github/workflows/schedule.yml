@@ -1,0 +1,10 @@
+# 15分ごとにジョブを実行するGitHub Actionsのワークフロー定義
+name: Schedule                     # ワークフロー名
+on:
+  schedule:                       # イベント（スケジュール時に起動）
+    - cron: '*/15 * * * *'             # 15分ごとに実行（UTC時間）
+jobs:                             # ジョブの定義
+  schedule:                       # ジョブID
+    runs-on: ubuntu-latest        # ランナー（Ubuntuで実行）
+    steps:                        # ステップの定義
+      - run: date                   # シェルコマンドの実行
