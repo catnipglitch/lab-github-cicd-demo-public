@@ -1,0 +1,12 @@
+# 手動イベントで github コンテキストを出力するワークフロー
+name: Dispatch Context Print
+on:
+  workflow_dispatch:               # 手動イベントで起動
+jobs:
+  print-context:                   # ジョブID
+    runs-on: ubuntu-latest         # ランナー（Ubuntuで実行）
+    steps:
+      - name: Job1
+        run:  |
+          echo "github context:"
+          echo "${{ toJson(github) }}"   # github コンテキストをJSON形式で出力
