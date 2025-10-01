@@ -1,4 +1,4 @@
-name: Manual
+name: Dispatch Manual
 on:
   workflow_dispatch:                       # 手動実行イベント
     inputs:
