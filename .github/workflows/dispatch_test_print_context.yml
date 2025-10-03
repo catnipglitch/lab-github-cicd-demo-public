@@ -5,8 +5,13 @@ on:
 jobs:
   print-context:                   # ジョブID
     runs-on: ubuntu-latest         # ランナー（Ubuntuで実行）
+    env:
+      DEMO_G_VARIABLE: ${{vars.G_VARIABLE_USERNAME}} # リポジトリ変数の参照例
+      DEMO_REPO_VARIABLE: ${{vars.R_VARIABLE_NAME}} # リポジトリ変数の参照例
+      
     steps:
       - name: Job1
         run:  |
-          echo "github context:"
-          echo "${{ toJson(github) }}"   # github コンテキストをJSON形式で出力
+          echo "${DEMO_G_VARIABLE}" 
+          echo "${DEMO_REPO_VARIABLE}"
+                
