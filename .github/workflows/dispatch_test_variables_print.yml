@@ -1,15 +1,17 @@
-# グローバル変数、リポジトリ変数にアクセスする
-name: Dispatch manual and print variables
+# 手動イベントで github コンテキストを出力するワークフロー
+name: Dispatch Context Print
 on:
-  workflow_dispatch:                       # 手動実行イベント
-    inputs:
-      greeting:                            # 入力パラメータ名
-        type: string                       # データ型（文字列）
-        default: Hello                     # 入力パラメータのデフォルト値
-        required: true                     # 入力パラメータの必須フラグ
-        description: A cheerful word       # 入力パラメータの概要
+  workflow_dispatch:               # 手動イベントで起動
 jobs:
-  run:
-    runs-on: ubuntu-latest
+  print-context:                   # ジョブID
+    runs-on: ubuntu-latest         # ランナー（Ubuntuで実行）
+    env:
+      DEMO_G_VARIABLE: ${{vars.G_VARIABLE_USERNAME}} # リポジトリ変数の参照例
+      DEMO_REPO_VARIABLE: ${{vars.R_VARIABLE_NAME}} # リポジトリ変数の参照例
+      
     steps:
-      - run: echo "${{ inputs.greeting }}" # 入力パラメータ「greeting」の参照
+      - name: Job1
+        run:  |
+          echo "${DEMO_G_VARIABLE}" 
+          echo "${DEMO_REPO_VARIABLE}"
+                
