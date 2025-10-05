@@ -1,7 +1,8 @@
 # 手動アクション。文字列を入力して、そのまま出力する。
 name: Dispatch Manual
 on:
-  workflow_dispatch:                       # 手動実行イベント    inputs:
+  workflow_dispatch:                       # 手動実行イベント
+    inputs:
       greeting:                            # 入力パラメータ名
         type: string                       # データ型（文字列）
         default: Hello                     # 入力パラメータのデフォルト値
