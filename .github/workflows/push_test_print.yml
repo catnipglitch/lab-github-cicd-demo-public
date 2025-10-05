@@ -1,3 +1,5 @@
+# プッシュ時のアクションワークフローテスト。
+# プッシュされると Hello world! と表示される
 name: Push and Hello world!                      # ワークフロー名
 on: push                          # イベント（プッシュ時に起動）
 jobs:                             # ジョブの定義
