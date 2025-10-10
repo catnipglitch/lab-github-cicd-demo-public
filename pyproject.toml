@@ -8,3 +8,8 @@ dependencies = [
     "python-dotenv>=1.0.0",
     "sentry-sdk>=2.40.0",
 ]
+
+[dependency-groups]
+dev = [
+    "pylint>=3.2.0",
+]

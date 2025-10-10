@@ -3,7 +3,6 @@
 import logging
 import os
 from pathlib import Path
-import dotenv
 from dotenv import load_dotenv
 import sentry_sdk
 
@@ -32,11 +31,12 @@ logging.basicConfig(level=logging.INFO)
 
 
 def main():
+    """CLI としてリポジトリ紹介メッセージをログ出力する。"""
     logger = logging.getLogger(__name__)
     logger.info("Hello from github-cicd-demo!")
     logger.info("This is a demo repository for GitHub Actions CI/CD workflows.")
     logger.info("You can trigger workflows on push or via manual dispatch with inputs.")
-    
+
 
 if __name__ == "__main__":
     main()

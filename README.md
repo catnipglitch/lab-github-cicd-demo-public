@@ -5,7 +5,7 @@ GitHub Actions の CI/CD ワークフローを試すためのシンプルな Pyt
 ## プロジェクト構成
 - `main.py`: CLI エントリーポイント。Sentry DSN を検出して初期化し、リポジトリ紹介メッセージを出力します。
 - `pyproject.toml`: パッケージ名・依存関係などのメタデータを管理します。
-- `uv.lock`: [uv](https://github.com/astral-sh/uv) 向けのロックファイルです。`uv sync` で同じ依存関係を再現できます。
+- `uv.lock`: [uv](https://github.com/astral-sh/uv) 向けのロックファイルです。`uv sync --dev` で同じ依存関係（開発用を含む）を再現できます。
 - `lab-github-cicd-demo-public.code-workspace`: VS Code 用のワークスペース設定です。
 
 ## セットアップ
@@ -18,7 +18,7 @@ GitHub Actions の CI/CD ワークフローを試すためのシンプルな Pyt
 3. 依存関係をインストールします。
    - uv を利用する場合（推奨）：
      ```bash
-     uv sync
+     uv sync --dev
      ```
    - pip を利用する場合：
      ```bash

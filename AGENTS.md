@@ -2,12 +2,12 @@
 
 ## Project Structure & Module Organization
 - `main.py` is the CLI entry point; it configures Sentry (when `SENTRY_DSN` is present) and emits the demo log messages.
-- `pyproject.toml` defines the Python 3.13+ package metadata and runtime dependencies; `uv.lock` pins resolved versions for `uv sync`.
+- `pyproject.toml` defines the Python 3.13+ package metadata and runtime dependencies; `uv.lock` pins resolved versions for `uv sync --dev`.
 - `.github/workflows/*.yml` hosts GitHub Actions pipelines (linting via Pylint plus manual dispatch demos). Adjust or add jobs there when automating checks.
 - Place local secrets in `.env` (ignored by Git) so `main.py` and the CI secrets layout stay aligned.
 
 ## Build, Test, and Development Commands
-- `uv sync` installs dependencies using the pinned lockfile; prefer this before running any commands.
+- `uv sync --dev` installs runtime + tooling dependencies from the lockfile; prefer this before running any commands.
 - `uv run python main.py` (or `python main.py`) executes the CLI locally and validates Sentry initialization.
 - `uv run pylint main.py` mirrors the CI lint workflow; keep the score clean before opening a PR.
 - `uv run pytest` runs the test suite once you add modules under `tests/`; pass `-q` for faster feedback.
