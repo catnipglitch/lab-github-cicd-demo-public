@@ -30,3 +30,22 @@
 ## Security & Configuration Notes
 - Never commit real DSNs or API keys; rely on `.env` locally and repository secrets in GitHub Actions.
 - When introducing new workflows, double-check required secrets exist and document any new environment variables in `README.md`.
+
+## Agent Task Logging Guidelines
+
+Create a folder named `.agents/` at the repository root.  
+Each task must have its own log file in `.agents/`, named:  
+`agent_task_YYYYMMDDHHMMSS_<slug>.md`  
+Example: `agent_task_20251010_153210_fix-login.md`
+
+Each log file should include:
+
+- User instruction (summary of what was requested)  
+- TODO list (steps to complete the task)  
+- Execution log (commands, timestamps, results)  
+- Outcome (final result, links to PRs or artifacts)
+
+If clarification from the user is needed, record the open question in the log before pausing work.  
+Resume the same task by appending updates to the same log file.  
+Always link the related `.agents/` log in the Pull Request description.  
+Never include secrets, DSNs, or API keys in `.agents/` logs.

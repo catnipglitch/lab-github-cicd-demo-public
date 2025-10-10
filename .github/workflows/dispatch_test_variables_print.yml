@@ -1,4 +1,4 @@
-# 手動イベントで github コンテキストを出力するワークフロー
+# 手動イベントでリポジトリ変数を読み出して出力するワークフロー
 name: Dispatch Print Variables DEMO
 on:
   workflow_dispatch:               # 手動イベントで起動

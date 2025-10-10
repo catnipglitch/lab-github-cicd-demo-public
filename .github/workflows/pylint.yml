@@ -1,3 +1,4 @@
+# main ブランチ向けに Pylint を実行して lint 成果をチェックするワークフロー
 name: Pylint
 
 on:
@@ -11,12 +12,12 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.11", "3.12"]  # ← 更新
+        python-version: ["3.11", "3.12"]
     steps:
       - uses: actions/checkout@v4
 
       - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v5   # ← v3 → v5 に更新（最新）
+        uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
 

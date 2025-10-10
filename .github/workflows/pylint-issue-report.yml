@@ -1,3 +1,4 @@
+# プッシュやPRで Pylint のエラーを収集し単一の Issue に集約するワークフロー
 name: Pylint Issue Reporter (Pylint to Issue)
 
 on:
