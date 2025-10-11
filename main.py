@@ -31,12 +31,12 @@ logging.basicConfig(level=logging.INFO)
 
 
 def main():
+    """Initialize Sentry for CLI runs and log repository introduction messages."""
 
-    # sentry初期化
-    sentry_sdk.init(dsn=dsn)
+    if dsn:
+        # CLI 実行時にも DSN が設定されていれば Sentry を初期化
+        sentry_sdk.init(dsn=dsn)
 
-
-    """CLI としてリポジトリ紹介メッセージをログ出力する。"""
     logger = logging.getLogger(__name__)
     logger.info("Hello from github-cicd-demo!")
     logger.info("This is a demo repository for GitHub Actions CI/CD workflows.")
