@@ -34,7 +34,7 @@ def main():
 
     # sentry初期化
     sentry_sdk.init(dsn=dsn)
-    
+
 
     """CLI としてリポジトリ紹介メッセージをログ出力する。"""
     logger = logging.getLogger(__name__)
@@ -42,7 +42,7 @@ def main():
     logger.info("This is a demo repository for GitHub Actions CI/CD workflows.")
     logger.info("You can trigger workflows on push or via manual dispatch with inputs.")
 
-    a = 1/0  # 例外を発生させて Sentry に通知するためのコード
+#    a = 1/0  # 例外を発生させて Sentry に通知するためのコード
 
 if __name__ == "__main__":
     main()
