@@ -1,0 +1,10 @@
+#リリースノート設定ファイル
+changelog:
+  categories:
+    - title: Enhancement
+      labels:
+        - enhancement
+    - title: Bug Fixes
+      labels:
+        - bug
+        - fix
