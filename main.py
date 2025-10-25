@@ -9,9 +9,7 @@ import sentry_sdk
 
 def _get_sentry_dsn() -> str | None:
     """実行環境に応じて Sentry DSN を決定する。"""
-    in_codespaces = bool(
-        os.getenv("CODESPACES") or os.getenv("CODESPACE_NAME")
-    )
+    in_codespaces = bool(os.getenv("CODESPACES") or os.getenv("CODESPACE_NAME"))
     if not in_codespaces:
         env_file = Path(__file__).resolve().parent / ".env"
         load_dotenv(env_file, override=False)
@@ -41,6 +39,7 @@ def main():
     logger.info("Hello from github-cicd-demo!")
     logger.info("This is a demo repository for GitHub Actions CI/CD workflows.")
     logger.info("You can trigger workflows on push or via manual dispatch with inputs.")
+
 
 #    a = 1/0  # 例外を発生させて Sentry に通知するためのコード
 
