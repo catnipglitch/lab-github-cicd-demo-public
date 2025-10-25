@@ -75,9 +75,9 @@ def import_main_fresh(
 def test_import_without_dsn_does_not_init_sentry(monkeypatch: pytest.MonkeyPatch):
     mod, stub = import_main_fresh(monkeypatch, env={}, with_sentry_stub=True)
     assert stub is not None
-    assert stub.inits == [], (
-        "sentry_sdk.init should not be called at import without DSN"
-    )
+    assert (
+        stub.inits == []
+    ), "sentry_sdk.init should not be called at import without DSN"
     # Also ensure computed dsn is None
     assert getattr(mod, "dsn", None) in (None, ""), "dsn should be falsy without env"
 
@@ -107,9 +107,9 @@ def test_import_with_dsn_calls_sentry_init(monkeypatch: pytest.MonkeyPatch):
     _, stub = import_main_fresh(monkeypatch, env=env, with_sentry_stub=True)
 
     assert stub is not None
-    assert len(stub.inits) == 1, (
-        "Top-level import should initialize Sentry once when DSN present"
-    )
+    assert (
+        len(stub.inits) == 1
+    ), "Top-level import should initialize Sentry once when DSN present"
     args, kwargs = stub.inits[0]
     assert args == ()
     assert kwargs.get("dsn") == env["SENTRY_DSN"]
@@ -132,6 +132,6 @@ def test_main_calls_sentry_init_again_when_dsn_present(monkeypatch: pytest.Monke
     assert first_kwargs.get("dsn") == env["SENTRY_DSN"]
     # First call may also include traces_sample_rate (from import-time init)
 
-    assert second_kwargs == {"dsn": env["SENTRY_DSN"]}, (
-        "main() should call sentry_sdk.init(dsn=dsn)"
-    )
+    assert second_kwargs == {
+        "dsn": env["SENTRY_DSN"]
+    }, "main() should call sentry_sdk.init(dsn=dsn)"
