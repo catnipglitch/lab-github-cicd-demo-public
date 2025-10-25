@@ -1,11 +1,11 @@
-name: format
+name: test
 
 on:
   pull_request:
     branches: [ main ]
 
 jobs:
-  format:
+  test:
     runs-on: ubuntu-latest
 
     steps:
@@ -17,8 +17,9 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Install Black
-        run: pip install black
+      - name: Install dependencies
+        run: |
+          pip install pytest
 
-      - name: Run Black (check mode)
-        run: black --check .
+      - name: Run tests
+        run: pytest --maxfail=1 --disable-warnings -q
