@@ -1,5 +1,7 @@
 name: format
-
+# ワークフロー全体に適用する場合（推奨）
+permissions:
+  contents: read
 on:
   pull_request:
     branches: [ main ]
